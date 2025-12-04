@@ -279,39 +279,6 @@ Both scripts follow this workflow:
 - **Output file**: ~4x the original video size (for 4x upscaling)
 - Ensure sufficient disk space before processing
 
-## Troubleshooting
-
-### "Input file not found"
-- Verify the video file path is correct
-- Use absolute paths if relative paths fail
-
-### "No frames were extracted"
-- Video may be corrupted or in an unsupported format
-- Try re-encoding the video with FFmpeg first:
-  ```bash
-  ffmpeg -i input.mov -c:v libx264 -c:a copy input_reencoded.mp4
-  ```
-
-### "Failed to upscale frames"
-- Check GPU drivers are installed and working
-- Verify model files exist in `models/` directory
-- Ensure sufficient GPU memory (reduce parallel jobs if needed)
-
-### Out of memory errors
-- Reduce parallel jobs in `sc_parallel.sh`
-- Use `sc.sh` for sequential processing
-- Process shorter video segments
-
-### Slow processing
-- Check GPU utilization: `nvidia-smi` (for NVIDIA GPUs)
-- Increase parallel jobs if GPU is underutilized
-- Ensure no other processes are using the GPU
-
-## Supported Video Formats
-
-The scripts support any video format that FFmpeg can decode:
-- MP4, MOV, AVI, MKV, WebM, FLV, and more
-- Various codecs (H.264, H.265, VP9, etc.)
 
 ## License
 
