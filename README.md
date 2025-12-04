@@ -102,7 +102,7 @@ Models must be placed in the `models/` directory. Each model requires two files:
 1. **Clone or download this repository:**
    ```bash
    git clone <repository-url>
-   cd upscayl-bin-20240601-103425-linux
+   cd upscayl-video
    ```
 
 2. **Download upscayl-bin:**
