@@ -28,7 +28,7 @@ These scripts provide an automated solution for upscaling video files using Real
 
 ### ⚡ **Performance Optimizations**
 - **Batch Processing**: Optimized thread configuration for efficient GPU utilization
-- **Parallel Processing**: `sc_parallel.sh` supports multiple concurrent upscaling jobs
+- **Parallel Processing**: `upscayl_video_parallel.sh` supports multiple concurrent upscaling jobs
 - **Smart Error Handling**: Robust error detection and recovery for corrupted video files
 - **Time Estimation**: Provides accurate processing time estimates before starting
 
@@ -123,7 +123,7 @@ Models must be placed in the `models/` directory. Each model requires two files:
 
 5. **Make scripts executable:**
    ```bash
-   chmod +x sc.sh sc_parallel.sh
+   chmod +x upscayl-video.sh upscayl_video_parallel.sh
    ```
 
 6. **Configure script paths (if needed):**
@@ -132,7 +132,7 @@ Models must be placed in the `models/` directory. Each model requires two files:
 
 ## Usage
 
-### Sequential Processing (`sc.sh`)
+### Sequential Processing (`upscayl-video.sh`)
 
 Processes videos frame-by-frame sequentially. Best for:
 - Systems with limited GPU memory
@@ -141,16 +141,16 @@ Processes videos frame-by-frame sequentially. Best for:
 
 **Basic Usage:**
 ```bash
-./sc.sh input_video.mp4
+./upscayl-video.sh input_video.mp4
 ```
 
 **Example:**
 ```bash
-./sc.sh my_video.mov
+./upscayl-video.sh my_video.mov
 # Output: my_video_upscaled.mkv
 ```
 
-### Parallel Processing (`sc_parallel.sh`)
+### Parallel Processing (`upscayl_video_parallel.sh`)
 
 Processes multiple frame batches simultaneously. Best for:
 - High-end GPUs (RTX 3090, RTX 4090, etc.)
@@ -159,34 +159,34 @@ Processes multiple frame batches simultaneously. Best for:
 
 **Basic Usage:**
 ```bash
-./sc_parallel.sh input_video.mp4 [parallel_jobs]
+./upscayl_video_parallel.sh input_video.mp4 [parallel_jobs]
 ```
 
 **Examples:**
 ```bash
 # Use default 3 parallel jobs
-./sc_parallel.sh my_video.mp4
+./upscayl_video_parallel.sh my_video.mp4
 
 # Specify 4 parallel jobs (for RTX 3090 24GB)
-./sc_parallel.sh my_video.mp4 4
+./upscayl_video_parallel.sh my_video.mp4 4
 
 # Use 2 parallel jobs (for lower-end GPUs)
-./sc_parallel.sh my_video.mp4 2
+./upscayl_video_parallel.sh my_video.mp4 2
 ```
 
 **Parallel Jobs Recommendations:**
 - **RTX 3090 24GB**: 2-4 parallel jobs
 - **RTX 4090**: 3-5 parallel jobs
 - **Lower-end GPUs (8-12GB)**: 1-2 parallel jobs
-- **Very limited GPU memory**: Use `sc.sh` instead
+- **Very limited GPU memory**: Use `upscayl-video.sh` instead
 
 ### Custom Temp Directory
 
-For `sc_parallel.sh`, you can specify a custom temporary directory if `/tmp` doesn't have enough space:
+For `upscayl_video_parallel.sh`, you can specify a custom temporary directory if `/tmp` doesn't have enough space:
 
 ```bash
 export UPSCAYL_TEMP=/path/to/large/disk
-./sc_parallel.sh my_video.mp4
+./upscayl_video_parallel.sh my_video.mp4
 ```
 
 ## Script Configuration
@@ -196,7 +196,7 @@ export UPSCAYL_TEMP=/path/to/large/disk
 Edit the `MODEL` variable in either script:
 
 ```bash
-# In sc.sh or sc_parallel.sh, change:
+# In upscayl-video.sh or upscayl_video_parallel.sh, change:
 MODEL=RealESRGAN_General_WDN_x4_v3
 # To:
 MODEL=YourModelName
