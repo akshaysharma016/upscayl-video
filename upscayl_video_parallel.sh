@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e  # Exit on error
 
-UPSCAYL=/home/genai/Downloads/upscayl-bin-20240601-103425-linux/upscayl-bin
+UPSCAYL=upscayl-bin
 MODEL=RealESRGAN_General_WDN_x4_v3
 # can use any model from upscayl-bin-20240601-103425-linux/models
 
